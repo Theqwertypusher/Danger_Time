@@ -8,7 +8,7 @@ const path = require('path');
 /* required routers */
 const authrouter = require('./router/authrouter');
 const mainrouter = require('./router/mainrouter');
-// const datarouter = require('./router/datarouter');
+const datarouter = require('./router/datarouter');
 
 /* CORS middleware to prevent CORS policy during POST */
 app.use(cors());
@@ -41,7 +41,7 @@ app.use('/auth', authrouter);
 
 // handle all other requests
 // receive requests for /main/data
-// app.use('/main/data', datarouter);
+app.use('/main/data', datarouter);
 // receive request for /main/historicaldata, /main/addURL, /main/interval, /main/checknow, then direct to /mainrouter
 app.use('/main', mainrouter);
 

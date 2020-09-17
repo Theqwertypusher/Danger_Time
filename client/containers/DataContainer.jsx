@@ -24,6 +24,10 @@ class DataContainer extends Component {
     super(props);
   }
 
+  // SET INTERVAL
+  // CLEAR INTERVAL
+
+
   //when user logs in, this component will pull data from database for each url that belongs to the user
   //send to backend url-id, and how many rows of data we want to retrieve
   //backend will send back

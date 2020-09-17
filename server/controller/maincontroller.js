@@ -6,6 +6,8 @@ const maincontroller = {};
 const fetch = require('node-fetch');
 const db = require('../db/databaseIndex.js');
 
+// test api - https://pokeapi.co/api/v2/pokemon/ditto
+
 /* Need to import node library if we want to use fetch in the backend */
 
 // SAVE NEW URL TO DATABASE
@@ -67,7 +69,10 @@ maincontroller.addStatus = (req, res, next) => {
     }));
 };
 
+
+
 /* ITERATION OPTION: TASK SCHEDULER MIDDLEWARE */
+
 
 maincontroller.startTasks = () => {
   return maincontroller.pingAll('test');
@@ -133,9 +138,6 @@ twillio API for text messages */
 // Login
 // cam hello -> 7yxf, bcrypt adds salt register
 // updateInterval - update interval in database
-maincontroller.updateInterval = (req, res, next) => {
-  next();
-};
 
 /* 6) - data pull[https://mdbootstrap.com/docs/react/advanced/charts/](https://mdbootstrap.com/docs/react/advanced/charts/)
 get historical data from database , will be default time (we will test to determine later)
@@ -145,6 +147,31 @@ res.locals = will send back 2 arrays
 A)all the times URL was pinged
 B)all the status codes */
 // getData 5 -query the database for times and status code for url given in req.body, then save to res.locals and send back a res contiaing res.locals
+
+maincontroller.test = (req, res, next) => {
+  console.log('test')
+}
+
+
+maincontroller.updateInterval = (req, res, next) => {
+  console.log('main.controller updateInterval - inside')
+
+  const intervalObj = setInterval(() => {
+
+    console.log('setInterval - inside')
+    maincontroller.test()
+    next()
+    // maincontroller.pingUrl()
+    // maincontroller.saveStatus()
+
+  }, 3000)
+  
+  next();
+};
+
+
+
+
 maincontroller.getData = (req, res, next) => {
   next();
 };

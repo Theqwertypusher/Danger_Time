@@ -68,13 +68,22 @@ time will be req.body */
 // pingURLInterval - A- retrieve URL and interval from database,
 // B-set timer to ping URL, C-send message to twilio if status is not 200,
 // D- save status code and time in database
-// router.put('/interval', maincontroller.updateInterval,
-// maincontroller.pingUrlInterval, (req, res) => {
-//     res.status(200).send('Interval successfully changed');
-//   });
 
-// router.get('/historicalData', maincontroller.getData, (req, res) => {
-// res.status(200).send('test');
-// });
+
+
+
+// START INTERVAL when component mounts? 
+router.put('/interval', 
+  maincontroller.updateInterval,
+  (req, res) => {
+      res.status(200).send('Interval successfully changed');
+    });
+
+// GET HISTORY?  
+router.get('/historicalData', 
+  maincontroller.getData, 
+  (req, res) => {
+res.status(200).send('test');
+});
 
 module.exports = router;

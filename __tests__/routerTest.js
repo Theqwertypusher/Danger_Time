@@ -5,8 +5,9 @@ const server = 'http://localhost:3333';
 
 // Please remember to 'npm start' the server before running router tests
 describe('Route integration', () => {
+
   describe('/', () => {
-    describe('GET', () => {
+    describe('GET', () => {    //WHATS THE PURPOSE ? 
       it('responds with 200 status and text/html content type', () => request(server)
         .get('/')
         .expect('Content-Type', /text\/html/)
@@ -15,7 +16,8 @@ describe('Route integration', () => {
   });
 
   describe('/main', () => {
-    describe('/addURL', () => {
+    describe('main/addURL', () => {
+      // CHECK RES STATUS AND RES OBJ
       it('responds with 200 status and json content type', () => request(server)
         .post('/main/addURL')
         .send({ url: 'https://pokeapi.co/api/v2/pokemon/ditto' })
@@ -24,25 +26,26 @@ describe('Route integration', () => {
         .expect(200));
 
       it('contains url id and status in body of response', () => request(server)
-        .post('/main/addURL')
+        .post('/addURL')
         .send({ url: 'https://pokeapi.co/api/v2/pokemon/ditto' })
         .set('Accept', 'application/json')
         .expect((response) => {
+          // status obtained from database
           response.body.status = '200';
           response.body.url_id = /\d+/;
         }));
     });
 
-    describe('/checkStatus', () => {
+    describe('/checkNow', () => {
       it('responds with 200 status and json content type', () => request(server)
-        .post('/main/addURL')
+        .post('/main/checkNow')
         .send({ url: 'https://pokeapi.co/api/v2/pokemon/ditto' })
         .set('Accept', 'application/json')
         .expect('Content-Type', /json/)
         .expect(200));
 
       it('contains status in body of response', () => request(server)
-        .post('/main/addURL')
+        .post('/main/checkNow')
         .send({ url: 'https://pokeapi.co/api/v2/pokemon/ditto' })
         .set('Accept', 'application/json')
         .expect((response) => {
