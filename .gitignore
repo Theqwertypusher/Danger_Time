@@ -3,4 +3,3 @@ npm-debug.log
 .env
 .eslintrc.js
 package-lock.json
-webpack.config.js

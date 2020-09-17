@@ -7,7 +7,7 @@
   "description": "",
   "main": "webpack.config.js",
   "scripts": {
-    "start": "nodemon server/server.js",
+    "start": "nodemon ./server/server.js",
     "test": "jest --verbose",
     "build": "cross-env NODE_ENV=production webpack",
     "frontend": "NODE_ENV=development webpack-dev-server --open",

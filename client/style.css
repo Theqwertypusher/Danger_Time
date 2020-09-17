@@ -1,15 +1,29 @@
-html, body {
+body {
   /* background: lightgrey; */
-  background-image: linear-gradient(rgb(255, 59, 59), rgb(253, 253, 146));
+  /* background-image: linear-gradient(rgb(255, 59, 59), rgb(253, 253, 146)); */
+  background-color: #197278;
   height: 100%;
+}
+
+header {
+  width: 98vw;
+  background-color: #283D3B;
+  /* padding: 0.5rem; */
+  padding: 0.5rem 0.5rem 0.5rem 0rem;
 }
 
 h1 {
   display: flex;
   justify-content: start;
-  margin-left: 1.5rem;
-  margin-top: 2rem;
+  margin-left: 1rem;
+  margin-top: 0.5rem;
+  margin-bottom: 1rem;
   font-family: Arial, Helvetica, sans-serif;
+  background-color: #C44536;
+  color: #EDDDD4;
+  padding: 0.8rem 0.7rem 0.8rem 0.7rem;
+  width: 14.5rem;
+  border-radius: 3px;
 }
 
 #outputBoxContainer {
@@ -22,16 +36,27 @@ h1 {
   display: flex;
   justify-content: center;
   align-items: stretch;
-  margin-top: 3rem;
+  margin-top: 1rem;
 }
 
 input {
-  border: 2px solid black;
+  border: 0px solid black;
+  background-color: #EDDDD4;
+  color: #283D3B;
+  outline: none;
 }
  
 button {
-  border: 2px solid black;
-  border-radius: 10%;
+  border: 0px solid black;
+  border-radius: 3px;
+  background-color: #C44536;
+  color: #EDDDD4;
+  padding: 0.5rem;
+  outline: none;
+}
+
+button:hover {
+  background-color: #772E25;
 }
 
 #boxes {
@@ -40,13 +65,55 @@ button {
   justify-content: space-around;
   align-items: start;
   padding: 0.75rem;
-  border: 2px solid black;
-  border-radius: 3%;
+  border: 0px solid black;
+  border-radius: 3px;
   margin: 20px;
   overflow-wrap: anywhere;
+  background-color: #197278;
+  color: #EDDDD4;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+.fa-minus-square {
+  margin: 0.75rem 0rem 0rem 1rem;
+  display: inline-block;
+  color: #772E25;
+}
+
+.fa-check-square {
+  margin: 0.75rem 0rem 0rem 1rem;
+  display: inline-block;
+  color: rgb(0, 194, 16);
 }
 
 #input-output-container {
-  width: 30%;
-  min-width: 15rem;
+  /* width: 30%; */
+  width: 18rem;
+}
+
+#app-container {
+  display: flex;
+  justify-content: space-around;
+}
+
+#graph-container {
+  margin: 4rem 2rem 2rem 2rem;
+}
+
+.graph {
+  background-color: #EDDDD4;
+  width: 30rem;
+  border-radius: 3px;
+  padding: 1rem;
+  color: #283D3B;
+  /* border: 1rem solid #197278; */
+}
+
+#main {
+  background-color:  #283D3B;
+  height: 100vh;
+}
+
+#data {
+  margin: 1rem auto 1rem auto;
 }

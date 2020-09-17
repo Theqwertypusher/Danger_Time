@@ -1,22 +1,31 @@
-import * as types from '../constants/actionTypes';
+import * as types from "../constants/actionTypes";
 
 const initialState = {
   /* Dummy Data this would be for pulling from DB */
   urlList: [
     {
-      username: 'Lucy', url: 'www.yahoo.com', status: 400, url_id: 80,
+      username: "Lucy",
+      url: "www.yahoo.com",
+      status: 400,
+      url_id: 80,
     },
     {
-      username: 'Chris', url: 'www.coinbase.com', status: 400, url_id: 81,
+      username: "Chris",
+      url: "www.coinbase.com",
+      status: 400,
+      url_id: 81,
     },
     {
-      username: 'Joon', url: 'www.facebook.com', status: 400, url_id: 90,
+      username: "Joon",
+      url: "www.facebook.com",
+      status: 400,
+      url_id: 90,
     },
   ],
-  newEndpoint: '',
-  status: '',
-  currentUser: '',
-  graphData: [{time: Date.now, status:200}]
+  newEndpoint: "",
+  status: "",
+  currentUser: "",
+  graphData: [],
 };
 
 const outputReducer = (state = initialState, action) => {

@@ -39,14 +39,14 @@ describe('Route integration', () => {
     describe('/checkNow', () => {
       it('responds with 200 status and json content type', () => request(server)
         .post('/main/checkNow')
-        .send({ url: 'https://pokeapi.co/api/v2/pokemon/ditto' })
+        .send({ url: 'https://pokeapi.co/api/v2/pokemon/ditto', url_id: 134 })
         .set('Accept', 'application/json')
         .expect('Content-Type', /json/)
         .expect(200));
 
       it('contains status in body of response', () => request(server)
         .post('/main/checkNow')
-        .send({ url: 'https://pokeapi.co/api/v2/pokemon/ditto' })
+        .send({ url: 'https://pokeapi.co/api/v2/pokemon/ditto', url_id: 134 })
         .set('Accept', 'application/json')
         .expect((response) => {
           response.body.status = '200';

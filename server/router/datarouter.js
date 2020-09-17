@@ -1,7 +1,6 @@
-const express = require('express');
+const express = require("express");
 const router = express.Router();
-const datacontroller = require('../controller/datacontroller');
-
+const datacontroller = require("../controller/datacontroller");
 
 /* Provide more visual context for each endpoint, user clicks and historical graphs are shown*/
 /* 6) - data pull[https://mdbootstrap.com/docs/react/advanced/charts/](https://mdbootstrap.com/docs/react/advanced/charts/)
@@ -13,9 +12,8 @@ A)all the times URL was pinged
 B)all the status codes */
 // getData 5 -query the database for times and status code for url given in req.body, then save to res.locals and send back a res contiaing res.locals
 
-
-// router.post('/', datacontroller.getdata, (req, res) => {
-//     res.status(200).json(res.locals.rows);
-// });
+router.post("*", datacontroller.getdata, (req, res) => {
+  res.status(200).send("hello");
+});
 
 module.exports = router;

@@ -1,9 +1,10 @@
-import axios from 'axios';
-import * as types from '../constants/actionTypes';
+import axios from "axios";
+import * as types from "../constants/actionTypes";
 
 // ADD API URL TO DATABASE
 export const addURL = (username, url) => (dispatch) => {
-  axios.post('/main/addURL', { url })
+  axios
+    .post("/main/addURL", { url })
     .then((result) => {
       dispatch({
         type: types.FINISHED_URL_ADD,
@@ -15,21 +16,22 @@ export const addURL = (username, url) => (dispatch) => {
         },
       });
     })
-    .catch((err) => console.log('addURL action ERROR', err));
+    .catch((err) => console.log("addURL action ERROR", err));
 };
 
 // GET UPDATED API URL STATUS
 export const checkStatus = (url, url_id) => (dispatch) => {
   // **INSERT API URL**
-  axios.post('/main/checkStatus', {url: url, url_id: url_id})
+  axios
+    .post("/main/checkStatus", { url: url, url_id: url_id })
     .then((result) => {
-      console.log('inside checkStatus action POST');
+      console.log("inside checkStatus action POST");
       dispatch({
         type: types.CHECK_NOW,
         payload: {},
       });
     })
-    .catch((err) => console.log('checkStatus action ERROR', err));
+    .catch((err) => console.log("checkStatus action ERROR", err));
 };
 
 const checkStatusStarted = () => ({
@@ -47,24 +49,23 @@ const checkStatusError = () => ({
   payload: true,
 });
 
-export const finishedUrlAdd = (addedUrlObj) => ({
-});
+export const finishedUrlAdd = (addedUrlObj) => ({});
 
 // Graph data actions
-export const loadGraphData = (url_id, rows) => (dispatch) => {
-  axios.post("http://localhost:3000/main/data", {
-    url_id,
-    rows,
-  })
-  .then((data) => {
-    console.log("data for graph: ", data);
-    dispatch({
-      type: "LOAD_GRAPH_DATA",
-      payload: data
+export const loadGraphData = (url_id) => (dispatch) => {
+  axios
+    .post("/main/data", {
+      url_id,
     })
-  })
-  .catch((error) => {
-    console.log("error message", error);
-  });
-
-}
+    .then((data) => {
+      console.log("data for graph: ", data);
+      const graphData = data.data.rows;
+      dispatch({
+        type: "LOAD_GRAPH_DATA",
+        payload: graphData,
+      });
+    })
+    .catch((error) => {
+      console.log("error message", error);
+    });
+};

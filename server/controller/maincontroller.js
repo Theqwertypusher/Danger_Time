@@ -12,11 +12,10 @@ const db = require('../db/databaseIndex.js');
 
 // SAVE NEW URL TO DATABASE
 maincontroller.saveUrl = (req, res, next) => {
-  console.log('main.controller.saveURL - inside')
-
-  const user_id = 42; 
+  console.log('main.controller.saveURL - inside');
+  const user_id = 42;
   const saveUrl = 'INSERT INTO url (user_id, url) VALUES ($1, $2) RETURNING url_id';
-  const params = [user_id, req.body.url]
+  const params = [user_id, req.body.url];
 
   db.query(saveUrl, params)
     .then((result) => {
@@ -30,40 +29,42 @@ maincontroller.saveUrl = (req, res, next) => {
     }));
 };
 
-//CHECK API URL STATUS...returned object is 200 status else 400 
+// CHECK API URL STATUS...returned object is 200 status else 400
 maincontroller.pingUrl = (req, res, next) => {
-  console.log('main.controller pingURL - inside')
+  console.log('main.controller pingURL - inside');
 
   fetch(req.body.url)
     .then((response) => response.json())
     .then((result) => {
-      if (typeof result === 'object') res.locals.status = '200'
-      else res.locals.status = '400'  
-      console.log(res.locals.status)
+      if (typeof result === 'object') res.locals.status = '200';
+      else res.locals.status = '400';
+      console.log(res.locals.status);
       return next();
     })
     .catch((error) => next({
-      log:'Fetch error in maincontroller.pingUrl',
+      log: 'Fetch error in maincontroller.pingUrl',
       status: 400,
       message: { err: error },
     }));
 };
 
-/* Adds URL attributes to Postgres, but also sends back status to the client so that we can keep track in state */
+/* Adds URL attributes to Postgres, but also sends back status
+to the client so that we can keep track in state */
 
 // ADD NEW URL STATUS RECORD IN DATABASE
 maincontroller.addStatus = (req, res, next) => {
-  console.log('main.controller addStatus - inside')
+  console.log('main.controller addStatus - inside');
 
   const addStatus = 'INSERT INTO status (url_id,status,time) VALUES ($1, $2, $3)';
-  const params = [res.locals.url_id || req.body.url_id, res.locals.status, Date.now()] 
+  const params = [res.locals.url_id || req.body.url_id, res.locals.status, Date.now()];
 
   db.query(addStatus, params)
     .then(() => {
-      console.log('inside maincontroller.Update Status Table query')
-      return next()})
+      console.log('inside maincontroller.Update Status Table query');
+      return next();
+    })
     .catch((error) => next({
-      log:'Query error in maincontroller.addStatus',
+      log: 'Query error in maincontroller.addStatus',
       status: 400,
       message: { err: error },
     }));
